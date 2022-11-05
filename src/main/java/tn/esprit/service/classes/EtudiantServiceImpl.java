@@ -2,13 +2,15 @@ package tn.esprit.service.classes;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.Persistance.entities.Equipe;
 import tn.esprit.Persistance.entities.Etudiant;
 import tn.esprit.Persistance.repositories.EtudiantRepository;
 import tn.esprit.service.interfaces.EtudiantService;
-
+@Slf4j
 @Service
 public class EtudiantServiceImpl implements EtudiantService {
 
@@ -42,13 +44,19 @@ public class EtudiantServiceImpl implements EtudiantService {
 
 	@Override
 	public void supprimerEtudiant(int id) {
+
 		etudRep.deleteById(id);
 	}
 
 	@Override
 	public List<Etudiant> chercherEtudiants() {
-		return etudRep.findAll();
-	}		 // return etudRep.findAll();
+
+		List<Etudiant> etudiants= etudRep.findAll();
+		for (Etudiant etudiant :etudiants){
+			log.info("etudiant :"+etudiants);
+		}
+		return etudiants;
+	}
 
 
 }

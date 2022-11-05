@@ -21,8 +21,8 @@ public class ContratController {
         return contratServ.chercherContrat();
     }
 
-    @GetMapping("/DisplayContratById")
-    public Contrat displayContratByID(@PathParam("id") int id) {
+    @GetMapping("/DisplayContratById/{id}")
+    public Contrat displayContratByID(@PathVariable("id") int id) {
 
         return contratServ.afficherContrat(id);
     }

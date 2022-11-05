@@ -1,7 +1,9 @@
 package tn.esprit.service.classes;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.Persistance.entities.Departement;
 import tn.esprit.Persistance.entities.DetailEquipe;
 import tn.esprit.Persistance.entities.DetailEquipe;
 import tn.esprit.Persistance.repositories.DetailEquipeRepository;
@@ -9,7 +11,7 @@ import tn.esprit.Persistance.repositories.DetailEquipeRepository;
 import tn.esprit.service.interfaces.DetailEquipeService;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class DetailEquipeServiceImp implements DetailEquipeService {
     @Autowired
@@ -39,7 +41,11 @@ public class DetailEquipeServiceImp implements DetailEquipeService {
 
     @Override
     public List<DetailEquipe> chercherDetailEquipe() {
-        return detailEquipeRepo.findAll();
+        List<DetailEquipe> DetailEquipes=detailEquipeRepo.findAll();
+        for (DetailEquipe detailequipe :DetailEquipes){
+            log.info("detailequipe :"+DetailEquipes);
+        }
+        return DetailEquipes;
 
     }
 }

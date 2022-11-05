@@ -24,8 +24,8 @@ public class DetailEquipeController {
         return DetailEquipeServ.chercherDetailEquipe();
     }
 
-    @GetMapping("/DisplayDetailEquipeById")
-    public DetailEquipe displayDetailEquipeByID(@PathParam("id") int id) {
+    @GetMapping("/DisplayDetailEquipeById/{id}")
+    public DetailEquipe displayDetailEquipeByID(@PathVariable("id") int id) {
 
         return DetailEquipeServ.afficherDetailEquipe(id);
     }

@@ -22,8 +22,8 @@ public class EquipeController {
 		return equipeServ.chercherEquipes();
 	}
 
-	@GetMapping("/DisplayEquipeById")
-	public Equipe displayEquipeByID(@PathParam("id") int id) {
+	@GetMapping("/DisplayEquipeById/{id}")
+	public Equipe displayEquipeByID(@PathVariable("id") int id) {
 
 		return equipeServ.afficherEquipe(id);
 	}

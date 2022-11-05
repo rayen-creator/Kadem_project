@@ -49,6 +49,7 @@ public class EtudiantController {
 
     @DeleteMapping("/deleteEtudiant/{id}")
     public void deleteEudiant(@PathVariable("id") int id) {
+
         etudserv.supprimerEtudiant(id);
     }
 }

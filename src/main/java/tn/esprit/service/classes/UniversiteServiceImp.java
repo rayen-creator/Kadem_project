@@ -1,14 +1,16 @@
 package tn.esprit.service.classes;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.Persistance.entities.Etudiant;
 import tn.esprit.Persistance.entities.Universite;
 import tn.esprit.Persistance.entities.Universite;
 import tn.esprit.Persistance.repositories.UniversiteRepository;
 import tn.esprit.service.interfaces.UniversiteService;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class UniversiteServiceImp implements UniversiteService {
     @Autowired
@@ -41,7 +43,12 @@ public class UniversiteServiceImp implements UniversiteService {
 
     @Override
     public List<Universite> chercherUniversites() {
-        return universiteRepo.findAll();
+
+        List<Universite> universites=universiteRepo.findAll();
+        for (Universite universite :universites){
+            log.info("universite :"+universites);
+        }
+        return universites;
     }		 
 
 }

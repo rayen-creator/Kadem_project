@@ -2,15 +2,17 @@ package tn.esprit.service.classes;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.Persistance.entities.DetailEquipe;
 import tn.esprit.Persistance.entities.Equipe;
 import tn.esprit.Persistance.entities.Etudiant;
 import tn.esprit.Persistance.repositories.EquipeRepository;
 import tn.esprit.Persistance.repositories.EtudiantRepository;
 import tn.esprit.service.interfaces.EquipeService;
-
+@Slf4j
 @Service
 public class EquipeServiceImp implements EquipeService {
 
@@ -42,8 +44,11 @@ public class EquipeServiceImp implements EquipeService {
 
 	@Override
 	public List<Equipe> chercherEquipes() {
-		return equipeRep.findAll();
-
+		List<Equipe> equipes=equipeRep.findAll();
+		for (Equipe equipe :equipes){
+			log.info("equipe :"+equipes);
+		}
+		return equipes;
 	}
 
 }

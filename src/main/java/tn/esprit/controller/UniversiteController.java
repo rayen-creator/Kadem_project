@@ -20,8 +20,8 @@ public class UniversiteController {
         return universiteServ.chercherUniversites();
     }
 
-    @GetMapping("/DisplayUniversiteById")
-    public Universite displayUniversiteByID(@PathParam("id") int id) {
+    @GetMapping("/DisplayUniversiteById/{id}")
+    public Universite displayUniversiteByID(@PathVariable("id") int id) {
 
         return universiteServ.afficherUniversite(id);
     }

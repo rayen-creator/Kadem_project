@@ -20,8 +20,8 @@ public class DepartementController {
         return departService.chercherDepartement();
     }
 
-    @GetMapping("/DisplayDepartementById")
-    public Departement displayDepartementByID(@PathParam("id") int id) {
+    @GetMapping("/DisplayDepartementById/{id}")
+    public Departement displayDepartementByID(@PathVariable("id") int id) {
 
         return departService.afficherDepartement(id);
     }
