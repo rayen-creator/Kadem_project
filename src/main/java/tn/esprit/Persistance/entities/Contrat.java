@@ -3,18 +3,9 @@ package tn.esprit.Persistance.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,8 +33,9 @@ public class Contrat implements Serializable{
 	private Specialite specalitee;
 	private boolean archive;
 	private Integer montantContrat;
-	@ManyToOne
-	private Etudiant etudiants;
+	@JsonIgnore
+	@OneToOne
+	private Etudiant etudiant;
 
 	public Integer getIdContrat() {
 		return idContrat;
@@ -93,11 +85,11 @@ public class Contrat implements Serializable{
 		this.montantContrat = montantContrat;
 	}
 
-	public Etudiant getEtudiants() {
-		return etudiants;
+	public Etudiant getEtudiant() {
+		return etudiant;
 	}
 
-	public void setEtudiants(Etudiant etudiants) {
-		this.etudiants = etudiants;
+	public void setEtudiant(Etudiant etudiant) {
+		this.etudiant = etudiant;
 	}
 }

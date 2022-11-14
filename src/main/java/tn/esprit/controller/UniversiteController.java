@@ -27,13 +27,13 @@ public class UniversiteController {
     }
 
     @PostMapping("/AddUniversite")
-    public Universite addUniversite(@RequestBody Universite e) {
-        return universiteServ.ajouterUniversite(e);
+    public int addUniversite(@RequestBody Universite u) {
+        return universiteServ.ajouterUniversite(u);
     }
 
     @PutMapping("/UpdateUniversite")
-    public Universite updateUniversite(@RequestBody Universite e) {
-        return universiteServ.mettreAjourUniversite(e);
+    public Universite updateUniversite(@RequestBody Universite u) {
+        return universiteServ.mettreAjourUniversite(u);
     }
 
     @DeleteMapping("/deleteUniversite/{idUniversite}")

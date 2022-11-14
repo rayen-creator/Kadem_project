@@ -8,10 +8,10 @@ public interface EtudiantService {
 	
 	public Etudiant afficherEtudiant(int id);
 	
-	public Etudiant ajouterEtudiant(Etudiant e);
+	public int ajouterEtudiant(Etudiant e);
 	
 	public Etudiant mettreAjourEtudiant(Etudiant e);
-	
+
 	public void supprimerEtudiant (int id);
 	
 	public List<Etudiant> chercherEtudiants();

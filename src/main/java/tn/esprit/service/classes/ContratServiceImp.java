@@ -19,27 +19,31 @@ public class ContratServiceImp implements ContratService {
     @Override
     public Contrat afficherContrat(int id) {
 
-        return contratRepo.findById(id).get();
+        Contrat contrat =(Contrat) contratRepo.findById(id).get();
+        log.info("contrat :"+ contrat);
+
+        return contrat;    }
+
+    @Override
+    public int ajouterContrat(Contrat c) {
+        contratRepo.save(c);
+        log.info(c+"Ajouter avec succee ");
+        return c.getIdContrat();
     }
 
     @Override
-    public Contrat ajouterContrat(Contrat e) {
-        return this.contratRepo.save(e);
-
-    }
-
-    @Override
-    public Contrat mettreAjourContrat(Contrat e) {
-        Contrat Contrat = contratRepo.findById(e.getIdContrat()).orElse(null);
-        if(Contrat != null)
-            contratRepo.save(e);
-        return e;
+    public Contrat mettreAjourContrat(Contrat c) {
+        Contrat contrat = contratRepo.findById(c.getIdContrat()).get();
+        contratRepo.save(contrat);
+        log.info("Mise à jour réussie:"+contrat );
+        return (contrat);
 
     }
 
     @Override
     public void supprimerContrat(int id) {
         contratRepo.deleteById(id);
+        log.info("supprimé :"+id );
     }
 
     @Override

@@ -9,7 +9,7 @@ public interface DetailEquipeService {
 
     public DetailEquipe afficherDetailEquipe(int id);
 
-    public DetailEquipe ajouterDetailEquipe(DetailEquipe e);
+    public int ajouterDetailEquipe(DetailEquipe e);
 
     public DetailEquipe mettreAjourDetailEquipe(DetailEquipe e);
 

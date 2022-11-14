@@ -27,7 +27,7 @@ public class DepartementController {
     }
 
     @PostMapping("/AddDepartement")
-    public Departement addDepartement(@RequestBody Departement e) {
+    public int addDepartement(@RequestBody Departement e) {
         return departService.ajouterDepartement(e);
     }
 

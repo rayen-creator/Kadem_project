@@ -16,12 +16,17 @@ public class DepartementServiceImp implements DepartementService {
     DepartementRepository depRepo;
     @Override
     public Departement afficherDepartement(int id) {
-        return this.depRepo.findById(id).get();
+        Departement departement =(Departement) depRepo.findById(id).get();
+        log.info("Departement :"+ departement);
+
+        return departement;
     }
 
     @Override
-    public Departement ajouterDepartement(Departement e) {
-        return this.depRepo.save(e);
+    public int ajouterDepartement(Departement e) {
+        depRepo.save(e);
+        log.info(e + " Ajouter avec succee l'id dep :"+e.getIdDepart());
+        return e.getIdDepart();
     }
 
     @Override
@@ -29,12 +34,15 @@ public class DepartementServiceImp implements DepartementService {
         Departement Departement = depRepo.findById(e.getIdDepart()).orElse(null);
         if (Departement != null)
             depRepo.save(e);
+        log.info("Mise à jour réussie id dep:"+e.getIdDepart());
+
         return e;
     }
 
     @Override
     public void supprimerDepartement(int id) {
         depRepo.deleteById(id);
+        log.info("supprimé dep :"+id);
     }
 
     @Override

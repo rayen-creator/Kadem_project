@@ -28,13 +28,13 @@ public class ContratController {
     }
 
     @PostMapping("/AddContrat")
-    public Contrat addContrat(@RequestBody Contrat e) {
+    public int addContrat(@RequestBody Contrat e) {
         return contratServ.ajouterContrat(e);
     }
 
     @PutMapping("/UpdateContrat")
-    public Contrat updateContrat(@RequestBody Contrat e) {
-        return contratServ.mettreAjourContrat(e);
+    public Contrat updateContrat(@RequestBody Contrat c) {
+        return contratServ.mettreAjourContrat(c);
     }
 
     @DeleteMapping("/deleteContrat/{idContrat}")

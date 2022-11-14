@@ -4,6 +4,7 @@ import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.Persistance.entities.Equipe;
@@ -19,33 +20,32 @@ public class EtudiantServiceImpl implements EtudiantService {
 
 	@Override
 	public Etudiant afficherEtudiant(int id) {
-
-		return this.etudRep.findById(id).get();
+		Etudiant etudiant =(Etudiant) etudRep.findById(id).get();
+		log.info("Etudiant :"+ etudiant);
+		return etudiant;
 	}
 
 	@Override
-	public Etudiant ajouterEtudiant(Etudiant e) {
-		return this.etudRep.save(e);
-	//  public int 
-	//etudrep.save(e)
-	//return e.getIdEtudiant()
+	public int ajouterEtudiant(Etudiant e) {
+		etudRep.save(e);
+		log.info(e+": Ajouter avec succee ");
+		return e.getIdEtudiant();
 	}
 
 	@Override
 	public Etudiant mettreAjourEtudiant(Etudiant e) {
-		 Etudiant Etudiant = etudRep.findById(e.getIdEtudiant()).orElse(null);
-			if(Etudiant != null)
-				etudRep.save(e);
-	        return e;
-	        // argument int id Etudiant e = etudRep.findById(id).get();
-	        //etudRep.save(e)
-	        // return(e);
+		Etudiant etudiant = etudRep.findById(e.getIdEtudiant()).get();
+		if (etudiant != null)
+			etudRep.save(e);
+			log.info("Mise à jour réussie id :"+e.getIdEtudiant());
+		return (e);
 	}
 
 	@Override
 	public void supprimerEtudiant(int id) {
 
 		etudRep.deleteById(id);
+		log.info("supprimé id :"+id );
 	}
 
 	@Override
@@ -58,5 +58,16 @@ public class EtudiantServiceImpl implements EtudiantService {
 		return etudiants;
 	}
 
-
+	@Scheduled(fixedRate = 30000)
+	public void fixedRateMethod() {
+		System.out.println("******** Method with fixed Rate every 30 seconde**********");
+	}
+	@Scheduled(fixedDelay = 60000)
+	public void fixedDelayMethod() {
+		System.out.println( "******** Method with fixed delay every 60 seconde**********");
+    }
+    @Scheduled(cron = "*/60 * * * * *" )
+    public void cronMethod() {
+		System.out.println("**********Method with cron expression every 60 seconde**********");
+    }
 }

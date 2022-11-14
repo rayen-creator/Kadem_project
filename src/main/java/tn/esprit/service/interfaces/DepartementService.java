@@ -9,7 +9,7 @@ public interface DepartementService{
 
     public Departement afficherDepartement(int id);
 
-    public Departement ajouterDepartement(Departement e);
+    public int ajouterDepartement(Departement e);
 
     public Departement mettreAjourDepartement(Departement e);
 

@@ -8,9 +8,9 @@ public interface UniversiteService {
 
     public Universite afficherUniversite(int id);
 
-    public Universite ajouterUniversite(Universite e);
+    public int ajouterUniversite(Universite e);
 
-    public Universite mettreAjourUniversite(Universite e);
+    public Universite mettreAjourUniversite(Universite u);
 
     public void supprimerUniversite(int id);
 

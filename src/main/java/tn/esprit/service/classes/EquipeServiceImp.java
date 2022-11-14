@@ -21,12 +21,17 @@ public class EquipeServiceImp implements EquipeService {
 
 	@Override
 	public Equipe afficherEquipe(int id) {
-		return this.equipeRep.findById(id).get();
+		Equipe equipe =(Equipe) equipeRep.findById(id).get();
+		log.info("Equipe :"+ equipe);
+
+		return equipe;
 	}
 
 	@Override
-	public Equipe ajouterEquipe(Equipe e) {
-		return this.equipeRep.save(e);
+	public int ajouterEquipe(Equipe e) {
+		equipeRep.save(e);
+		log.info(e +"Ajouter avec succee ");
+		return e.getIdEquipe();
 	}
 
 	@Override
@@ -34,12 +39,14 @@ public class EquipeServiceImp implements EquipeService {
 		Equipe equipe = equipeRep.findById(e.getIdEquipe()).orElse(null);
 		if (equipe != null)
 			equipeRep.save(e);
+			log.info("updatedEquipe"+e.getIdEquipe());
 		return e;
 	}
 
 	@Override
 	public void supprimerEquipe(int id) {
 		equipeRep.deleteById(id);
+		log.info("EquipeDeleted"+id);
 	}
 
 	@Override
@@ -50,5 +57,6 @@ public class EquipeServiceImp implements EquipeService {
 		}
 		return equipes;
 	}
+
 
 }

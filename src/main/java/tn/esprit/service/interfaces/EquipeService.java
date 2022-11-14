@@ -8,7 +8,7 @@ public interface EquipeService {
 
 	public Equipe afficherEquipe(int id);
 
-	public Equipe ajouterEquipe(Equipe e);
+	public int ajouterEquipe(Equipe e);
 
 	public Equipe mettreAjourEquipe(Equipe e);
 

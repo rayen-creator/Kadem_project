@@ -31,7 +31,7 @@ public class DetailEquipeController {
     }
 
     @PostMapping("/AddDetailEquipe")
-    public DetailEquipe addDetailEquipe(@RequestBody DetailEquipe e) {
+    public int addDetailEquipe(@RequestBody DetailEquipe e) {
         
         return DetailEquipeServ.ajouterDetailEquipe(e);
     }

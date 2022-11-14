@@ -4,20 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -51,8 +38,8 @@ public class Etudiant implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Option options;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiants")
-	private Set<Contrat> contrat;
+	@OneToOne(mappedBy = "etudiant")
+	private Contrat contrat ;
 	@ManyToMany(mappedBy = "etudiants", cascade = CascadeType.ALL)
 	private Set<Equipe> equipes;
 	@ManyToOne
@@ -90,11 +77,11 @@ public class Etudiant implements Serializable {
 		this.dateDebut = dateDebut;
 	}
 
-	public Set<Contrat> getContrat() {
+	public Contrat getContrat() {
 		return contrat;
 	}
 
-	public void setContrat(Set<Contrat> contrat) {
+	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
 	}
 

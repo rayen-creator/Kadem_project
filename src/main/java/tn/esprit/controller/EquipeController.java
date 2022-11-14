@@ -29,7 +29,7 @@ public class EquipeController {
 	}
 
 	@PostMapping("/AddEquipe")
-	public Equipe addEquipe(@RequestBody Equipe e) {
+	public int addEquipe(@RequestBody Equipe e) {
 		return equipeServ.ajouterEquipe(e);
 	}
 

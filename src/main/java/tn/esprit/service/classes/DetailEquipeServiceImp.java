@@ -18,12 +18,15 @@ public class DetailEquipeServiceImp implements DetailEquipeService {
     DetailEquipeRepository detailEquipeRepo;
     @Override
     public DetailEquipe afficherDetailEquipe(int id) {
-        return this.detailEquipeRepo.findById(id).get();
-    }
+        DetailEquipe detailEquipe =(DetailEquipe) detailEquipeRepo.findById(id).get();
+        log.info("DetailEquipe displayed :"+ detailEquipe.getIdDetailEquipe());
+        return detailEquipe;    }
 
     @Override
-    public DetailEquipe ajouterDetailEquipe(DetailEquipe e) {
-        return this.detailEquipeRepo.save(e);
+    public int ajouterDetailEquipe(DetailEquipe d) {
+        detailEquipeRepo.save(d);
+        log.info(d+"Ajouter avec succee id :"+d.getIdDetailEquipe());
+        return d.getIdDetailEquipe();
     }
 
     @Override
@@ -31,12 +34,15 @@ public class DetailEquipeServiceImp implements DetailEquipeService {
         DetailEquipe DetailEquipe = detailEquipeRepo.findById(e.getIdDetailEquipe()).orElse(null);
         if (DetailEquipe != null)
             detailEquipeRepo.save(e);
+        log.info("updatedDetailEquipe"+e.getIdDetailEquipe());
+
         return e;
     }
 
     @Override
     public void supprimerDetailEquipe(int id) {
         detailEquipeRepo.deleteById(id);
+        log.info("detailEquipeDeleted"+id);
     }
 
     @Override

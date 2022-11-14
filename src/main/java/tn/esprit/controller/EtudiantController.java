@@ -38,7 +38,7 @@ public class EtudiantController {
     }
 
     @PostMapping("/AddEtudiant")
-    public Etudiant addEtudiant(@RequestBody Etudiant e) {
+    public int addEtudiant(@RequestBody Etudiant e) {
         return etudserv.ajouterEtudiant(e);
     }
 
